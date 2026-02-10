@@ -82,4 +82,4 @@
 #         print(f"{self.name}님 자전거 바퀴 가격 총액은 {total}원 입니다.", end='')
 
 # gildong = Bicycle('길동', 2, 50000) # 생성자로 name, wheel, price 입력됨
-# gildong.display()
+# gildong.display() 
