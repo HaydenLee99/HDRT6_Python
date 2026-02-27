@@ -1,7 +1,7 @@
 #banner{height: 10px;}
-.another{height: 300px; width: 400px;}
-#memu{width: 100px;}
-#gak{height: 30px;}
+.another{height: 600px; width: 1000px;}
+#memu{width: 200px;}
+#gak{height: 100px;}
 a:link{text-decoration: none;}
-a{color: black;}
-a:hover{color: crimson;}
+a{color: orange;}
+a:hover{color: purple;}
