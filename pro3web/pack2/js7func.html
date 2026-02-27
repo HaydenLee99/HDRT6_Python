@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        function bb(){
+            document.write(`bb 함수 실행 성공`);
+            cc(5);      // 함수가 다른 함수 호출 가능, 반환값은 무시한다
+            // return;     // 함수 무조건 탈출. 자기를 부른 곳으로 돌아감
+
+            let re = cc(5);     // 반환값 처리
+            document.write(`<br>re는 ${re}`);
+        }
+
+        function cc(para){      // 매개변수가 있는 함수
+            let kk = para + 10
+            document.write(`<br>kk는 ${kk}`);
+            return kk;          // 반환 값은 1개만 가능
+        }
+        
+        function dd(para1, para2){      // 매개변수가 있는 함수
+            document.write(`<br>dd의 함수에서 ${para1} ${para2}`);
+        }
+        
+        // 전역, 지역 변수(상수)
+        let a = 100;
+        const b = 200;
+        function func(){
+            let c = 300;
+            const d = 400;
+            document.write(`<br>a:${a},b:${b},c:${c},d:${d}`);
+        }
+    </script>
+
+</head>
+<body>
+    함수(function) : 하나의 특별한 목적의 작업을 수행하도록 설계된 독립적인 블록{}을 의미<br>
+<script>
+// 내장 함수
+let str = "Java script Language"
+document.write("original : ", str)
+document.write(`<br>str.charAt(2) : ${str.charAt(2)}`)
+document.write(`<br>str.bold() : ${str.bold()}`)
+document.write(`<br>Math.abs(-7) : ${Math.abs(-7)}`)
+</script>
+<hr>
+사용자 정의 함수<br>
+<script>
+let cnt = 0;
+function aa(){
+    cnt++;
+    document.write(cnt + "번 수행<br>");
+}
+aa();
+document.write("뭔가를 하다가...<br>");
+aa();
+
+document.write("함수는 창조형 타입 : ", typeof(aa));
+
+</script>
+<div>오늘은 금요일 이다.</div>
+<script>
+    aa();
+</script>
+<div><b>생각의 전환 : html 선언부에 js code 작성 후 호출하자 (권장)</b></div>
+<hr>
+<script>
+    bb();
+    dd(7);              // 값을 받지 못하면 error가 아니라 undefined 된다
+    dd(7, 54);
+    dd(7, 54, 879);     // 초과되는 인자는 무시된다
+
+    // js는 일급객체를 지원한다. - python과 동일
+    // 즉, 함수가 함수 호출 가능하고 매개변수 함수 전달 가능하며 반환값 함수 가능
+
+    func();
+    document.write(`<br><br>a:${a},b:${b}`);
+    // document.write(`<br>c:${c},d:${d}`); // REFERENCE ERROR 지역값이라 못 찾음
+    
+</script>
+
+</body>
+</html>

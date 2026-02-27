@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열 Array</h1>
+    JavaScript 배열 : 
+    <ol>순서가 있는 여러 개의 자료를, 대표명을 주고, 첨자(index)로 각 기억장소를 구분하는, 자료구조</ol>
+    <ol>반복처리에 효과적</ol>
+    <ol>형식 : 배열명 = new Array();</ol>
+<script>
+    let aa = new Array();   // 크기가 가변적, 자동 확장 - 배열 요소 값 type은 마음대로 , 배열 타입은 object
+    aa[0] = 10; aa[1] = 5.6; aa[3] = "결과는 "; aa[4] = "안녕"; aa[5] = true;
+    aa[6] = {kbs:9, sbs:5}; // json type : {key : value}
+    document.write(aa, ' ', typeof(aa));
+    document.write(`<br>${aa[0]} ${aa[1]} 전체 크기 : ${aa.length}`);
+    let su = 0;
+    document.write(`<br>${aa[0]} ${aa[su]}`);    // index는 상수 or 변수 가능
+    document.write(`<br>`);
+
+    let bb = new Array(100, 200, 300);          // 배열 선언 시 초기값 부여
+    document.write(`<br>${bb[0]} ${bb[1]} ${bb[2]}`);
+
+    let cc = [];    // 비어 있는 배열 선언
+    cc[0] = "tom";
+    cc.push(23, 1234, 5678);    //메소드를 이용해서 값저장 가능
+    document.write(`<br>${cc[0]} ${cc[1]} ${cc[2]} ${cc[3]} ${cc[4]} ${cc[5]}`);
+    document.write(`<br>cc 배열의 크기는 ${cc.length}`);
+
+    document.write(`<hr>`);
+    let dd = new Array();       // 배열 선언 후 for를 통해 자료 입출력
+    for (let m = 0; m < 10; m++){
+        dd[m] = m + 1;
+    }
+    document.write("dd[0] : ", dd[0]);
+    document.write(`<br>`);
+
+    for (let m = 0; m < 10; m++){
+        document.write(dd[m]+"&nbsp;&nbsp;&nbsp;&nbsp;");
+        console.log(dd[m]);
+    }
+    document.write(`<br>`);
+
+    let myarr = [
+        '안녕', true, 3.5, {name:'신기해'}, 
+        function(){
+            document.write('난 함수');
+        }
+    ]
+    document.write(myarr[0]);
+    document.write(myarr[3].name);
+    myarr[4]();
+
+    // 배열 요소 제거 :  delete, splice
+    document.write(`<hr>`);
+    let ar = ['i', 'go', 'home'];
+    document.write(ar," ",ar.length);
+    document.write(`<br>`);
+    delete ar[1];   // 값만 지우고 자리는 확보해둠
+    document.write(ar," ",ar.length);
+    document.write(`<br>`);
+    ar = ['i', 'go', 'home'];
+    ar.splice(1,1)  // 인덱스 1부터 1개 삭제
+    document.write(ar," ",ar.length);
+    document.write(`<br>`);
+    
+    //구조분해 할당 : 배열, 객체의 값들을 추출하여 한 번에 여러 변수에 할당함.
+    let nums = [1,2,3,4];
+    let [a1, a2, a3] = nums;
+    document.write(`${a1} ${a2} ${a3}`);
+    
+    // 전개 연산자 : ...
+    const fruits = ['apple', 'peach', 'melon'];
+    const imsi = [...fruits];
+    document.write(`<br>`);
+    document.write(imsi);
+
+    
+</script>
+</body>
+</html>

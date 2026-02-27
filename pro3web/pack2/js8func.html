@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>js의 대화 상자 관련 함수 모음</h2>
+    <script>
+        let irum = "홍길동";
+        let tel = "111-1111";
+        alert("이름은 " + irum + "\n전화는 " + tel);    // 진행 중에 alert를 만나면 멈추고 창을 띄운다. 창을 확인하면 다시 진행된다.
+        console.log("이름은 " + irum + "\n전화는 " + tel);
+        document.write("<br>alert 함수 수행 후 계속");
+        let result = confirm("계속해요? 말아요? 우짤까요?");    // 선택 창, 선택값에 따라 true/false
+        document.write("<br>선택한 값은 "+result);
+        let juso = prompt("거주지 입력", "강남대로");
+        document.write("<br>거주지 : ", juso);
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>반복문 for(초기값; 조건; 증가값;)</h1>
+    <hr>
+    <script>
+        let a;
+        for (a = 1; a <= 5; a++) {      // 조건이 거짓이면 탈출함.
+            document.write("a 값은 [" + a + "] 입니다. <br>");
+        }
+        document.write("for 블럭 수행 후 a 값은 [" + a + "] 입니다. <br><br>");
+
+        for (a = 5; a >= 1; a--) {      // 조건이 거짓이면 탈출함.
+            document.write("a 값은 [" + a + "] 입니다. <br>");
+        }
+        document.write("for 블럭 수행 후 a 값은 [" + a + "] 입니다. <br><br>");
+
+        for (a = 3; a < 11; a += 2) {      // 조건이 거짓이면 탈출함.
+            document.write("a 값은 [" + a + "] 입니다. <br>");
+        }
+        document.write("for 블럭 수행 후 a 값은 [" + a + "] 입니다. <br><br>"); 
+
+        document.write("<h1>다중 for</h1>"); 
+        for (a = 1; a <= 3; a++) {      // 조건이 거짓이면 탈출함.
+            document.write("a 값은 [" + a + "] 입니다. <br>");
+            for (let i = 1; i <= 4; i++) {
+                document.write("i 값은 [" + i + "] 입니다. &nbsp&nbsp&nbsp");
+            }
+            document.write("<br>");
+        }
+
+        let total = 0;
+        for (let a = 1; a <= 10; a++) {      // 조건이 거짓이면 탈출함.
+            total += a;
+        }
+        document.write("<br>1 ~ 10 까지의 정수 합은 ", total);
+
+        total = 0;
+        for (let i = 1; i <= 100; i++) {      // 조건이 거짓이면 탈출함.
+            if (i % 2 === 0 && i % 5 !== 0){    // JavaScript에선 값 비교시 === 권장
+                total += i;
+            }
+        }
+        document.write("<br>1 ~ 100 까지의 정수 중 2의 배수이나 5의 배수가 아닌 수의 합은 ", total);
+        /* 
+        느슨한 동등 비교 == : 타입을 자동 변환하여 값만 비교 (속도가 느림) 
+        엄격한 일치 비교 == : 값과 dataType이 모두 맞아야 true (속도가 빠름) 
+        */
+        document.write("<hr>2 ~ 9단 까지 구구단 table<br>");
+        document.write("<table>");
+        for(let a = 2; a < 10; a++){
+            document.write("<tr>");
+                for(let b = 1; b < 10; b++){
+                    // document.write("<td>");
+                    //     document.write(a + "X" + b + " = " + a*b);
+                    // document.write("</td>");
+                    document.write(`<td>${a}X${b} = ${a*b}&nbsp;&nbsp;</td>`)   // 템플릿 문자열
+                }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</body>
+</html>
