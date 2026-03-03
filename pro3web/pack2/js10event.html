@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    function func(){
+        // 이벤트 처리 함수라 해보자
+        let dateTime = "2026-3-3";
+        let arrDate = dateTime.split("-");
+        console.log(`${arrDate[0]}년 ${arrDate[1]}월 ${arrDate[2]}일`);
+    }
+    </script>
+</head>
+<body>
+    <h1>Event Programing</h1><hr>
+    <a href="https:www.naver.com">네이버</a><br>
+    <a href="javascript:func()">이벤트 처리 함수 호출1(이벤트 핸들러 없음)</a><br>
+    이벤트 핸들러는 "on이벤트종류=핸들러함수()" 꼴<br>
+    <a href="javascript:onclick=func()">이벤트 처리 함수 호출2(이벤트 핸들러)</a><br>
+    <button onclick="func()">이벤트 처리 함수 호출3</button>
+    <input type="button" onclick="func()" value="이벤트 처리 함수 호출4"/>
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){};
+        window.onload = () => {
+            // alert("load");
+            document.getElementById("colorW").onclick = function(){
+                // alert("w");
+                document.bgColor = "white";
+            }
+            document.getElementById("colorG").onclick = () => {
+                // alert("g");
+                document.bgColor = "#0f0";
+            }
+            document.querySelector("#colorR").onclick = () => {
+                // alert("r");
+                document.bgColor = "rgb(100%,0%,0%)";
+            }
+            document.querySelector(".hello").onclick = () => {
+                document.querySelector("#show").innerText = "반갑다";
+            }
+            document.querySelector("#calc").ondblclick = () => {
+                let ss = `연산 결과는 ${10*10}`;
+                document.querySelector("#show").innerText = ss;
+            }
+            document.querySelector("#name").onmouseover = () => {
+                document.querySelector("#show").innerHTML = "<h2>홍길동</h2>";
+            }
+            document.querySelector("#name").onmouseout = () => {
+                document.querySelector("#show").innerHTML = "출력장소";
+            }
+            // a tag : click event default
+            document.querySelector("#daum").onclick = function(event){
+                event.preventDefault();     // 해당 tag에 고유기능 삭제
+                document.title = "새로운 제목";
+            }
+            // select
+            const sdata = document.querySelector("#sel");
+            // sdata.onclick = () => {      // 항목 선택시 이벤트 발생
+            //     document.querySelector("#show").innerHTML = sdata.value;
+            // }
+            sdata.onchange = () => {        // 항목 변경시 이벤트 발생
+                document.querySelector("#show").innerHTML = sdata.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    ** 여러 Event 경험하기 **<hr>
+    <input type="button" value="흰색" id="colorW">
+    <!-- <input type="button" value="녹색" id="colorG">
+    <input type="button" value="적색" id="colorR"> -->
+    <span id="colorG"> 녹색 </span>
+    <b id="colorR" style="border: 2px solid black; cursor: pointer;"> 적색 </b>
+    <hr>
+    이벤트 종류<br>
+    <button id="hello" class="hello"> 인사하기(클릭) </button>
+    <button id="calc">계산하기(더블클릭)</button>
+    <button id="name">이름알기(마우스오버)</button>
+    <br>
+    <a href="https://m.daum.net" id="daum">앵커 태그 클릭</a>
+    <br>
+    <select id="sel">
+        <option value="프로그래머">프로그래머</option>
+        <option value="웹퍼블리셔">웹퍼블리셔</option>
+        <option value="프로게이머" selected>프로게이머</option>
+    </select>
+    <br>
+    <hr>
+    <div id="show">출력장소</div>
+</body>
+</html>
