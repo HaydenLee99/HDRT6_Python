@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h3><i>●'◡'●</i> AJAX 3가지 방식 비교 <i>●'◡'●</i><br></h3>
+    <b>Axios</b> : node.js와 브라우저를 위한 Promise 기반 HTTP 클라이언트<hr>
+    <button id="btn1">1) fetch then</button>
+    <button id="btn2">2) async fetch</button>
+    <button id="btn3">3) axios</button>
+    <hr>
+    <div id="result">출력장소</div>
+
+    <script>
+        document.querySelector("#btn1").onclick = funcFetch;
+        document.querySelector("#btn2").onclick = funcAsync;
+        document.querySelector("#btn3").onclick = funcAxios;
+
+        // 1. fetch + then 방식
+        function funcFetch(){
+            // alert("a");
+            fetch("sangpum.json")
+                .then(response => {
+                    if (!response.ok) {
+                    throw new Error("서버 오류");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let output = "<b>fetch then 결과</b><br>";
+                    data.forEach(item => {
+                    output += "코드 : " + item.code + " / 품명 : " + item.sang + "<br>";
+                    });
+                    document.getElementById("result").innerHTML = output;
+                })
+                .catch(error => {
+                    document.getElementById("result").innerHTML = "오류 발생: " + error;
+                });
+        }
+        // 2. async + await fetch 방식
+        async function funcAsync(){
+            // alert("b");
+            try{
+                const response = await fetch("sangpum.json");
+                if(!response.ok){
+                    throw new Error("서버오류");
+                }
+                const data = await response.json();
+                let output = "<b>async await 결과</b><br>";
+                data.forEach(item => {
+                    output += "코드 : " + item.code + " / 품명 : " + item.sang + "<br>";
+                    });
+                    document.getElementById("result").innerHTML = output;
+            }catch(error){
+                document.getElementById("result").innerHTML = "오류 발생: " + error;
+            }
+        }
+        // 3. axios 방식
+        async function funcAxios(){
+            // alert("c");
+            try{
+                const response = await axios.get("sangpum.json");
+                const data = response.data;         // json 처리는 자동으로 해줌
+                let output = "<b>axios 결과</b><br>";
+                data.forEach(item => {
+                    output += "코드 : " + item.code + " / 품명 : " + item.sang + "<br>";
+                    });
+                    document.getElementById("result").innerHTML = output;
+            }catch(error){
+                document.getElementById("result").innerHTML = "오류 발생: " + error;
+            }
+        }
+    </script>
+</body>
+</html>

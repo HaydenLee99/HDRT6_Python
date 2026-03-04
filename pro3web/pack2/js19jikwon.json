@@ -1,0 +1,11 @@
+{
+    "status" : "success",
+    "count" : 5,
+    "data" : [
+        {"id" : 1, "name" : "홍길동", "dept" : "영업부", "salary" : 6500},
+        {"id" : 2, "name" : "천서진", "dept" : "총무부", "salary" : 4200},
+        {"id" : 3, "name" : "지은탁", "dept" : "전산부", "salary" : 5900},
+        {"id" : 4, "name" : "주단태", "dept" : "인사부", "salary" : 6700},
+        {"id" : 5, "name" : "김탁구", "dept" : "영업부", "salary" : 7700}
+    ]
+}
