@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2> 우리만 파는 <특급>상품 목록 </h2>
+<ul>
+    {% for p in products %}
+    <li>
+        {{ p.name }} (최저가 {{ (p.price/10000)|int }}만원)
+        <a href="/add/{{p.id}}">[장바구니 담기]</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

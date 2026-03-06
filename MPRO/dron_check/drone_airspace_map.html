@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3729e89c0a9aa11de9ec2eec48977e75 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+position: fixed;
+bottom: 50px;
+left: 50px;
+width: 220px;
+height: 120px;
+background-color: white;
+border:2px solid grey;
+z-index:9999;
+font-size:14px;
+padding:10px;
+">
+
+<b>Drone Airspace Legend</b><br>
+<span style="color:red;">●</span> No Fly Zone<br>
+<span style="color:green;">●</span> Restricted Zone<br>
+<br>
+Red : Flight Prohibited<br>
+Green : Flight Restricted
+
+</div>
+    
+            <div class="folium-map" id="map_3729e89c0a9aa11de9ec2eec48977e75" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3729e89c0a9aa11de9ec2eec48977e75 = L.map(
+                "map_3729e89c0a9aa11de9ec2eec48977e75",
+                {
+                    center: [36.5, 127.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3f62ef668b8d52c594b7cf14dcf10650 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3f62ef668b8d52c594b7cf14dcf10650.addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            var circle_53e9ecc149812fca4b3d1a76e74fb6f6 = L.circle(
+                [35.3213, 129.2954],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_53e9ecc149812fca4b3d1a76e74fb6f6.bindTooltip(
+                `<div>
+                     Kori Nuclear Restricted Zone (18km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6dffeead54326ee18037a905ef9a18b1 = L.circle(
+                [35.3213, 129.2954],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3600, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_6dffeead54326ee18037a905ef9a18b1.bindTooltip(
+                `<div>
+                     Kori Nuclear No-Fly Zone (3.6km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b14b5d643627625132da6032be7e1e37 = L.circle(
+                [35.7134, 129.4758],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_b14b5d643627625132da6032be7e1e37.bindTooltip(
+                `<div>
+                     Wolsong Nuclear Restricted Zone (18km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_543d9ac1f79de1b9a387aa280e56e347 = L.circle(
+                [35.7134, 129.4758],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3600, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_543d9ac1f79de1b9a387aa280e56e347.bindTooltip(
+                `<div>
+                     Wolsong Nuclear No-Fly Zone (3.6km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_9ddb4cb82136156476148c85373f0101 = L.circle(
+                [35.4105, 126.4178],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_9ddb4cb82136156476148c85373f0101.bindTooltip(
+                `<div>
+                     Hanbit Nuclear Restricted Zone (18km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_3fe408639bb6aedc71775e97b343692c = L.circle(
+                [35.4105, 126.4178],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3600, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_3fe408639bb6aedc71775e97b343692c.bindTooltip(
+                `<div>
+                     Hanbit Nuclear No-Fly Zone (3.6km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_26fbce23b2630c42efc03e869f6c6c99 = L.circle(
+                [36.979, 129.384],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_26fbce23b2630c42efc03e869f6c6c99.bindTooltip(
+                `<div>
+                     Hanul Nuclear Restricted Zone (18km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e08412033fa2c1228ddca11f9885a904 = L.circle(
+                [36.979, 129.384],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3600, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_e08412033fa2c1228ddca11f9885a904.bindTooltip(
+                `<div>
+                     Hanul Nuclear No-Fly Zone (3.6km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_71aad01c333173351d1b5913e7e915fb = L.circle(
+                [37.4602, 126.4407],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_71aad01c333173351d1b5913e7e915fb.bindTooltip(
+                `<div>
+                     Incheon Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e8bba4d5b379443172dde076c313e5ab = L.circle(
+                [37.5583, 126.7906],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_e8bba4d5b379443172dde076c313e5ab.bindTooltip(
+                `<div>
+                     Gimpo Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_927aa7310cc7dc84fa0afc90989249f1 = L.circle(
+                [33.5113, 126.4928],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_927aa7310cc7dc84fa0afc90989249f1.bindTooltip(
+                `<div>
+                     Jeju Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_925c42ceb2b1f299bc44724c0a9aef00 = L.circle(
+                [35.1795, 128.9382],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_925c42ceb2b1f299bc44724c0a9aef00.bindTooltip(
+                `<div>
+                     Gimhae Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_0b00c88310785f12220c3d1f13f2bda4 = L.circle(
+                [35.8941, 128.6589],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_0b00c88310785f12220c3d1f13f2bda4.bindTooltip(
+                `<div>
+                     Daegu Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_0f930ca532ccb8bcf1ac3309a7639dd6 = L.circle(
+                [36.7166, 127.4987],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_0f930ca532ccb8bcf1ac3309a7639dd6.bindTooltip(
+                `<div>
+                     Cheongju Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e2fb13b8aa04bb715c8493039a48367a = L.circle(
+                [34.9914, 126.3828],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_e2fb13b8aa04bb715c8493039a48367a.bindTooltip(
+                `<div>
+                     Muan Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_89195fb456dcde331dc6a40857ec5758 = L.circle(
+                [38.0613, 128.6692],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_89195fb456dcde331dc6a40857ec5758.bindTooltip(
+                `<div>
+                     Yangyang Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f42abc30be4934dedb87b8cef609ab87 = L.circle(
+                [37.4412, 127.9639],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_f42abc30be4934dedb87b8cef609ab87.bindTooltip(
+                `<div>
+                     Wonju Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_0dfbe34f1cc19a8d7a8ac65d70ecb10c = L.circle(
+                [35.0886, 128.0704],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_0dfbe34f1cc19a8d7a8ac65d70ecb10c.bindTooltip(
+                `<div>
+                     Sacheon Airport Restricted Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b40f9b2c967da00648424124981b0360 = L.circle(
+                [37.4442, 127.1196],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_b40f9b2c967da00648424124981b0360.bindTooltip(
+                `<div>
+                     Seongnam Airbase Military Airbase Restricted
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_10f8ed715500f96fd472f566fdbb5579 = L.circle(
+                [37.0907, 127.0293],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_10f8ed715500f96fd472f566fdbb5579.bindTooltip(
+                `<div>
+                     Osan Airbase Military Airbase Restricted
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6511c435589ee3016283b94cbe0506fc = L.circle(
+                [37.2395, 127.007],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.25, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9300, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_6511c435589ee3016283b94cbe0506fc.bindTooltip(
+                `<div>
+                     Suwon Airbase Military Airbase Restricted
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f1cb5ac92c6b07f98bba501e9d0dbe85 = L.circle(
+                [37.5326, 126.99],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_f1cb5ac92c6b07f98bba501e9d0dbe85.bindTooltip(
+                `<div>
+                     Seoul P73 No Fly Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6fdb19fa02d8adb541da3d38d7714d21 = L.circle(
+                [36.2762, 127.2465],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_3729e89c0a9aa11de9ec2eec48977e75);
+        
+    
+            circle_6fdb19fa02d8adb541da3d38d7714d21.bindTooltip(
+                `<div>
+                     Gyeryongdae Military Zone
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
