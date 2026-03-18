@@ -1,0 +1,53 @@
+/* css 파일 주석 */
+#myid2{
+    background-color: yellow;
+    color: red;
+    font-size: 20px;
+}
+
+/* 동적 선택자 */
+input:focus{background-color: rgb(255,255,0);}
+
+a:Llink{text-decoration: none;}
+a:hover{color: orange; font-size:30 px}
+
+b{
+    font-size: 8px;
+}
+div b{font-size: 16px;}     /* div tag 자손 모두 */
+div > b{font-size: 16px; color: cyan;}     /* div tag 직계 자식 모두 */
+div b#hi{font-size: 30px;}  
+div b.hello{font-size: 60px;}
+
+/* css 파일의 주석 */
+#myid2{
+    background-color: yellow;
+    color: red;
+    font-size: 20px;
+
+}
+
+
+/* 동적 선택자 */ 
+/* input:focus{background-color: #aabbcc;} */
+/* input:focus{background-color: silver;} */
+/* input:focus{background-color: rgb(255,255,0);} */
+input:focus{background-color: rgb(100%,100%,0%);}
+
+a:link{text-decoration: none;}
+a:hover{color: orange; font-size: 30px;}
+
+
+
+nav {
+    width: 150px;
+    float: left;
+    text-align: center;
+}
+
+section {
+    margin-left: 156px;
+    text-align: center;
+}
+
+footer { text-align: center;}

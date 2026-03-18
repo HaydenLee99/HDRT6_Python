@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>-- 변수 --</h2>
+    <script type="text/JavaScript">
+        let aa = 100;
+        let bb = 20.5;
+        const cc = 300;         // 상수, 수정 불가
+        let dd = false;
+        let msg = "변수 선언 이해";
+        document.write(aa,"  ",bb,"  ",cc,"  ",dd,"  ",msg);
+        document.write("<hr>");
+        document.write("type 확인 : ", typeof(1),' ',typeof(-1.5),' ',typeof('hi'),' ',typeof(null),' ',typeof(undefined),' ',typeof(true));
+        /*  자바 스크립트 타입      typeof()
+            숫자는 number 
+            문자는 string
+            불리언  boolean
+            null은 object
+            undefined는 undefined
+        */
+        /*  {}는 영역 확보용
+            let 영역 내 변수는 지역 변수    var v1 꼴로 쓰면 전역 변수로 인식  */
+        {
+            let v1 = 1;
+            document.write("<br>", v1);
+            document.write("<br>");
+            {
+                let v2 = 2;
+                document.write("<br>", v1);
+                document.write("<br>", v2);
+                document.write("<br>");
+                {
+                    let v3 = 3;
+                    document.write("<br>", v1);
+                    document.write("<br>", v2);
+                    document.write("<br>", v3);
+                    document.write("<br>");
+                }
+            }
+        }
+        // document.write("<br>", v1,' ',v2,' ',v3);   // 영역 밖에 있으므로 error
+    </script>
+    <h2>-- 연산자 --</h2>
+    <script type="text/JavaScript">
+        let x = 5, y = 2;
+        document.write("연산자 우선 순위는 Python과 동일함<br>");
+        document.write("<br> x는 ",x," and y는 ",y);
+        document.write("<br>산술 연산 : ",x + y," and ",x / y," and ", x % y);
+        document.write("<br>관계 연산 : ",x > y," and ",x <= y," and ", x == y," and ", x != y);
+        document.write("<br>논리 연산 : ",x > y && x <= y," and ", x == y ||  x != y);
+        document.write("<br>누적 연산 : ", x = x + 1," and ",++x, " and ", x += 1);
+        document.write("<br>삼항 연산 : ",(x  >y)?1000:1000+2000);    //(조건)?참값:부정값
+        document.write("<br>", 'a'+'b'+'c')
+        let m, b, c;
+        m = b = c = 6 + 5       // 할당 연산(체이닝)
+        document.write("<br>", m," ",b," ",c)
+        
+    </script>
+</body>
+</html>

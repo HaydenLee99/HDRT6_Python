@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원정보</title>
+    <style>
+        td {text-align: center;}
+    </style>
+</head>
+<body>
+    <h2>직원 전체 자료</h2>
+    <p>로그인 사용자 : <b>[{{ login_user.jikwonno }}] {{ login_user.jikwonname }} {{ login_user.jikwonjik }}님,</b> 환영합니다.</p>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit">로그아웃</button>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>사번</th><th>직원명</th><th>부서명</th><th>직급</th><th>연봉</th><th>입사년</th>
+        </tr>
+        {% for r in rows %}
+            <tr>
+                <td>{{ r.jikwonno }}</td>
+                <td>
+                    <a href="{{ url_for('gogek_list', jikwonno=r.jikwonno) }}">{{ r.jikwonname }}</a></td>
+                <td>{{ r.busername }}</td>
+                <td>{{ r.jikwonjik }}</td>
+                <td>{{ r.jikwonpay }}</td>
+                <td>{{ r.jikwonibsail_year }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

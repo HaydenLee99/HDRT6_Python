@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const form = document.querySelector("form[name='postForm']");
+            const btn = document.querySelector("#btnSend");
+            btn.addEventListener("click",()=>{
+                form.requestSubmit();   // 검증 후 자료 전송 실행
+            });
+            // 입력 자료 오류 검사
+            form.addEventListener("submit", (event)=>{
+                const name = document.querySelector("#username").value.trim();
+                const email = document.querySelector("#email").value.trim();
+                
+                if(!name){
+                    alert("이름을 입력하시오");
+                    event.preventDefault();
+                    return;
+                }
+                if(!email||!email.includes("@")){
+                    alert("올바른 이메일을 입력하시오");
+                    event.preventDefault();
+                    return;
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <h2>POST 방식 요청(form)</h2>
+    <form action="post_result" method="post" name="postForm">
+        이름 : <input type="text" name="username" id="username"><br>
+        이메일 : <input type="text" name="email" id="email"><br>
+        <input type="button" value="전송" id="btnSend">
+    </form>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>앨범 목록</title>
+</head>
+
+<body>
+
+    <!-- ================= 앨범 목록 제목 ================= -->
+    <h2>앨범 목록</h2>
+
+
+    <!-- ================= Flash 메시지 출력 ================= -->
+    <!-- flash("메시지")로 저장된 1회용 메시지를 화면에 출력 -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for m in messages %}
+            <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+
+    <!-- ================= 앨범 추가 ================= -->
+    <h3>앨범 추가</h3>
+
+    <form action="{{ url_for('albums_add') }}" method="post">
+        <input name="name" placeholder="앨범 이름">
+        <button type="submit">추가</button>
+    </form>
+
+    <hr>
+
+
+    <!-- ================= 앨범 목록 테이블 ================= -->
+    <table border="1" cellpadding="6" cellspacing="0">
+
+        <tr>
+            <th>id</th>
+            <th>앨범명(카테고리)</th>
+            <th>생성일</th>
+            <th>관리</th>
+        </tr>
+
+        {% for a in albums %}
+        <tr>
+
+            <!-- 앨범 id -->
+            <td>{{ a.id }}</td>
+
+
+            <!-- 앨범 이름 클릭 시 사진 목록 페이지 이동 -->
+            <td>
+                <a href="{{ url_for('photos_list', album_id=a.id) }}">
+                    {{ a.name }}
+                </a>
+            </td>
+
+
+            <!-- 생성일 -->
+            <td>{{ a.created_at }}</td>
+
+
+            <!-- 앨범 관리 -->
+            <td>
+
+                <!-- 앨범 수정 -->
+                <a href="{{ url_for('albums_edit_form', album_id=a.id) }}">수정</a>
+
+
+                <!-- 앨범 삭제 -->
+                <form
+                    action="{{ url_for('albums_delete', album_id=a.id) }}"
+                    method="post"
+                    style="display:inline;"
+                    onsubmit="return confirm('앨범을 삭제할까요? (사진이 있으면 삭제 불가)');"
+                >
+                    <button type="submit">삭제</button>
+                </form>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+    <!-- ================= 안내 메시지 ================= -->
+    <p style="margin-top:12px;">
+        ※ 앨범 이름을 클릭하면 해당 앨범의 사진 목록으로 이동
+    </p>
+
+
+</body>
+</html>

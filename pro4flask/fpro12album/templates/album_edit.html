@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>앨범 수정</title>
+</head>
+
+<body>
+
+    <!-- ================= 페이지 제목 ================= -->
+    <h2>앨범 수정</h2>
+
+
+    <!-- ================= Flash 메시지 ================= -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for m in messages %}
+            <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+
+    <!-- ================= 앨범 수정 폼 ================= -->
+    <form action="{{ url_for('albums_edit_save', album_id=album.id) }}" method="post">
+
+        <!-- 앨범 ID -->
+        <p>
+            앨범 id: <b>{{ album.id }}</b>
+        </p>
+
+
+        <!-- 앨범 이름 수정 -->
+        <p>
+            이름:
+            <input name="name" value="{{ album.name }}">
+        </p>
+
+
+        <!-- 버튼 영역 -->
+        <button type="submit">저장</button>
+        <a href="{{ url_for('albums_list') }}">취소</a>
+
+    </form>
+
+</body>
+
+</html>

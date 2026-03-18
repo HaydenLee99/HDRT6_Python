@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>조건 판단문 if</h1>
+    <script>
+        // let ave = prompt("평균 점수를 입력하세요 ^^", "80");
+        let ave = 80;
+        document.write("입력 점수 : ", ave,"<br>");
+        if(ave >= 90) {
+            document.write("<b style='color:gold'>우수한 점수</b> : " + ave);}
+        else if(ave >= 70) {
+            document.write("<b>좀 더 열심히!</b> <b style='color:pink'>점수</b> : " + ave);
+            document.write("<br><b>할 수 있어 힘내!</b>");
+        }
+        else {
+            document.write("<b style='color:red'>이게 점수??</b> : " + ave);}
+    </script>
+    <br>조건 판단문 switch<br>
+    <script>
+        let result = "B"
+        switch (result)
+        {
+            case "A": document.write("훌륭하다."); break;
+            case "B": document.write("보통"); break;
+            case "C": document.write("다신 보지 말자"); break;
+            case "D": document.write("재수강"); break;
+            case "F": document.write("퇴학"); break;
+            default: document.write("외부인의 출입을 금합니다.");
+        }
+    </script>
+</body>
+</html>
