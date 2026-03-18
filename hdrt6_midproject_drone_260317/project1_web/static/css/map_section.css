@@ -1,0 +1,166 @@
+/* ============================================================
+map_section.css
+역할: 지도 패널 전용 스타일
+의존: common.css (CSS 변수)
+============================================================ */
+
+/* ─── 지도 패널 헤더 텍스트 강화 ─── */
+/* .panel-map .panel-header {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0;
+    text-transform: none;
+} */
+
+/* ─── 지도 패널 전체 ─── */
+.panel-map {
+    flex: 1.4;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ─── 툴바 (구역 토글 버튼 모음) ─── */
+/* .map-toolbar / .toggle-btn / .admin-date-input 등 → common.css 로 이동 */
+
+/* ─── 지도 컨테이너 ─── */
+.map-container {
+    position: relative;
+    background: #d8e8f4;
+    overflow: hidden;
+}
+
+#vmap {
+    width: 100%;
+    height: 540px;
+}
+#vmap .ol-control { display: none !important; }
+
+/* ─── 좌표 표시 (좌측 하단) ─── */
+.coord-display {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.coord-display span {
+    color: var(--accent2);
+    font-weight: 600;
+}
+
+/* ─── 줌 컨트롤 (우측 상단) ─── */
+.map-controls {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 10;
+}
+.map-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.map-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* ─── 클릭 정보 패널 (좌측 상단) ─── */
+.map-info-panel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 220px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 0.8rem;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.map-info-panel.show { display: block; }
+.map-info-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.map-info-close {
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.15s;
+}
+.map-info-close:hover { color: var(--text); }
+.map-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+}
+.map-info-row:last-child { border-bottom: none; }
+.map-info-row span:last-child { color: var(--text); font-weight: 500; }
+
+/* ─── 범례 (우측 하단) ─── */
+.map-legend {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.72rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+}
+.legend-color { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+/* ─── 툴바 변형 ─── */
+.map-toolbar-sub {
+    border-top: 1px solid var(--border);
+    padding-top: 0.35rem;
+}
+.map-toolbar-compact {
+    gap: 0.4rem;
+}

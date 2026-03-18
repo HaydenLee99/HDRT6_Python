@@ -1,0 +1,504 @@
+/* ============================================================
+   common.css
+   역할: 전체 페이지 공통 — CSS 변수(라이트 테마), 헤더, 네비, 공통 버튼
+   적용: main.html, admin.html, login.html, register.html, mypage.html
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── 라이트 테마 CSS 변수 ─── */
+:root {
+    /* 배경 */
+    --bg:       #f0f2f5;
+    --surface:  #ffffff;
+    --surface2: #f8fafd;
+
+    /* 보더 */
+    --border:   #dde3ee;
+
+    /* 포인트 컬러 (네이비) */
+    --accent:        #1e3a5f;
+    --accent2:       #2a52a0;
+    --accent-hover:  #162d4a;
+    --accent-light:  rgba(30, 58, 95, 0.08);
+
+    /* 텍스트 */
+    --text:       #1a2236;
+    --text-muted: #6b7a99;
+
+    /* 상태 색상 */
+    --green:  #16a34a;
+    --red:    #dc2626;
+    --yellow: #d97706;
+
+    /* 페이지 좌우 여백 */
+    --page-padding: 5%;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── TOP LOGO HEADER ─── */
+.top-logo-header {
+    background: var(--accent);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.top-logo-sub {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.02em;
+}
+
+/* ─── HEADER ─── */
+header {
+    background: var(--surface);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 var(--page-padding);
+    height: 62px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(30, 58, 95, 0.06);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+/* 로고 — 헤더 가운데 정렬 */
+.logo-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.logo-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2.5px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.logo-inner {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+}
+.logo-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+.logo-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 1px;
+}
+
+.header-right {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.header-divider {
+    color: var(--border);
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+/* 헤더 버튼 */
+.btn-header {
+    padding: 0.38rem 1rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.btn-header:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+.btn-header.admin {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+.btn-header.admin:hover {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: #fff;
+}
+
+/* ─── NAV TABS ─── */
+nav {
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    padding: 0 var(--page-padding);
+    display: flex;
+    gap: 0;
+}
+
+.nav-tab {
+    padding: 0.78rem 2rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.18s, border-color 0.18s;
+    font-family: inherit;
+    white-space: nowrap;
+}
+.nav-tab:hover { color: var(--accent); }
+.nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* ─── MAIN CONTENT 래퍼 ─── */
+main {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.2rem var(--page-padding);
+    min-height: 0;
+}
+
+/* ─── PANEL 공통 헤더 ─── */
+.panel-header {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: var(--surface2);
+}
+
+/* 실시간 점멸 dot */
+.panel-header .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 5px rgba(22, 163, 74, 0.4);
+    animation: blink 1.8s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ─── 공지사항 패널 ─── */
+.panel-notice {
+    display: none;
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+}
+.panel-notice.active { display: flex; }
+
+.notice-list { overflow-y: auto; flex: 1; }
+.notice-item {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-size: 0.85rem;
+}
+.notice-item:hover { background: var(--surface2) !important; }
+.notice-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.badge-new { background: var(--accent-light); color: var(--accent); }
+.badge-imp { background: rgba(217, 119, 6, 0.12); color: var(--yellow); }
+.notice-title { flex: 1; color: var(--text); }
+.notice-date  { color: var(--text-muted); font-size: 0.75rem; flex-shrink: 0; }
+
+/* ─── 공지 상세 모달 ─── */
+.notice-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+.notice-modal-overlay.open { display: flex; }
+
+.notice-modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 560px;
+    max-width: 92vw;
+    overflow: hidden;
+    animation: fadeUp 0.22s ease;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+.notice-modal-header {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.notice-modal-title { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+.notice-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: color 0.15s;
+}
+.notice-modal-close:hover { color: var(--text); }
+.notice-modal-body { padding: 1.2rem; }
+.notice-modal-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+.notice-modal-content {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.notice-modal-footer { padding: 0 1.2rem 1.2rem; display: flex; justify-content: flex-end; }
+.notice-modal-footer button {
+    padding: 0.4rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+.notice-modal-footer button:hover { background: var(--border); }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── 반응형 ─── */
+@media (max-width: 860px) {
+    main { flex-direction: column; }
+    .nav-tab { padding: 0.7rem 1.2rem; }
+    .logo-wrap { position: static; transform: none; }
+    .header-inner { justify-content: space-between; }
+}
+
+/* ============================================================
+   공통 — 지도 툴바 / 구역 토글 버튼
+   (map_section.css, admin.css 공유)
+============================================================ */
+.map-toolbar {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: var(--surface2);
+}
+
+.toggle-btn {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid;
+    background: transparent;
+    font-family: inherit;
+    transition: all 0.2s;
+    opacity: 0.45;
+}
+.toggle-btn.active              { opacity: 1; }
+.toggle-btn.forbidden           { border-color: #ef4444; color: #ef4444; }
+.toggle-btn.forbidden.active    { background: rgba(239, 68, 68, 0.15); }
+.toggle-btn.restricted          { border-color: #f59e0b; color: #f59e0b; }
+.toggle-btn.restricted.active   { background: rgba(245, 158, 11, 0.15); }
+.toggle-btn.danger              { border-color: #a855f7; color: #a855f7; }
+.toggle-btn.danger.active       { background: rgba(168, 85, 247, 0.15); }
+.toggle-btn.permit              { border-color: #22c55e; color: #22c55e; }
+.toggle-btn.permit.active       { background: rgba(34, 197, 94, 0.15); }
+
+/* ─── admin 전용 토글 색상 ─── */
+.toggle-btn.approved-btn        { border-color: #16a34a; color: #16a34a; }
+.toggle-btn.approved-btn.active { background: rgba(22, 163, 74, 0.15); }
+.toggle-btn.pending-btn         { border-color: #d97706; color: #d97706; }
+.toggle-btn.pending-btn.active  { background: rgba(217, 119, 6, 0.15); }
+.toggle-btn.rejected-btn        { border-color: #dc2626; color: #dc2626; }
+.toggle-btn.rejected-btn.active { background: rgba(220, 38, 38, 0.12); }
+
+/* ─── admin 지도 날짜 필터 ─── */
+.admin-date-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 0.72rem;
+    padding: 3px 7px;
+    outline: none;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+.admin-date-input:focus { border-color: var(--accent2); }
+
+.admin-filter-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.admin-filter-btn:hover { background: var(--accent-hover); }
+
+.admin-reset-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.admin-reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================
+   공통 — flash 메시지 / keyframes
+   (admin.css, login.css 공유)
+============================================================ */
+.flash-msg {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+.flash-success { background: rgba(22, 163, 74, 0.08);  color: var(--green);   border: 1px solid rgba(22, 163, 74, 0.25); }
+.flash-error   { background: rgba(220, 38, 38, 0.08);  color: var(--red);     border: 1px solid rgba(220, 38, 38, 0.25); }
+.flash-info    { background: rgba(30, 58, 95, 0.06);   color: var(--accent2); border: 1px solid rgba(30, 58, 95, 0.18); }
+.flash-default { background: rgba(30, 58, 95, 0.06);   color: var(--accent2); border: 1px solid rgba(30, 58, 95, 0.2); }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================================
+   공통 — 테이블 빈 행 / 패널 카운트 레이블
+============================================================ */
+.td-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 1.5rem;
+}
+.td-empty-lg {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+}
+.panel-count {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+.panel-count strong {
+    color: var(--accent2);
+    font-weight: 700;
+}
+.text-muted-sm {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+.text-accent-bold {
+    color: var(--accent2);
+    font-weight: 700;
+}
+.search-form-row {
+    display: flex;
+    gap: 0.6rem;
+    flex: 1;
+}
