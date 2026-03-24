@@ -48,7 +48,6 @@ plt.legend(['sine','cosine'])
 plt.show()
 
 
-
 plt.subplot(2,1,1)
 plt.plot(x,y_sin)
 plt.title('sine')
@@ -58,3 +57,18 @@ plt.plot(x,y_cos)
 plt.title('cosine')
 
 plt.show()
+
+irum = ['a','b','c','d','e']
+kor=[80,40,50,10,20]
+eng=[10,80,40,50,40]
+plt.plot(irum, kor,'ro-')
+plt.plot(irum, eng,'bo--')
+plt.title('시험점수')
+plt.legend(['국어','영어'], loc='best')
+plt.grid(True)
+# fig=plt.gcf()     # 이미지 저장 준비
+plt.show()
+# fig.savefig('plot1.png')
+from matplotlib.pyplot import imread
+# img=imread('plot1.png')   # 이미지 read
+# plt.imshow(img)
